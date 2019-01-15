@@ -1,0 +1,97 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+lv:
+  store:
+    index:
+      add_html: "Pievienot grozam"
+
+  layouts:
+    application:
+      title: "PC Shop"
+      home:  "Sākums"
+      about-us: "Par mums"
+      login: "Autorizācija"
+      contact: "Kontakti"
+      orders: "Pasūtījumi"
+      products: "Produkti"
+      users: "Lietotāji"
+      logout: "Iziet"
+
+  carts:
+    cart:
+      title: "Tavs grozs"
+      empty: "Iztukšot"
+      checkout: "Pirkt"
+
+  number:
+    currency:
+      format:
+        unit: "€"
+        precision: 2
+        separator: "."
+        delimiter: ","
+        format: "%u%n"
+
+  orders:
+    new:
+      legend: "Lūdzu ievadiet informāciju par sevi"
+    form:
+      name: "Vārds"
+      address_html: "Adrese"
+      email: "E-pasts"
+      pay_type: "Maksāšu ar"
+      pay_prompt_html: "Izvēlies maksājumu metodi"
+      submit: "Iegādāties"
+      pay_types:
+        check: "Čeks"
+        credit_card: "Kredītkarte"
+        purchase_order: "Pasūtījuma numurs"
+      check_pay_type:
+        routing_number: "Bankas kods:"
+        account_number: "Konta Nr."
+      credit_card_pay_type:
+        cc_number: "Drošības kods(CC):"
+        expiration_date: "Derīguma termiņš(Y/M)"
+      purchase_order_pay_type:
+        po_number: "Numurs:"
+
+  activerecord:
+    errors:
+      messages:
+        inclusion: "nevar tikt atlasīts"
+        blank: "lauks nevar būt tukšs"
+  errors:
+    template:
+      body: "sekojošas problēmas aizpildot formu"
+      header:
+        one: "1 %{model} kļūdu ir nepieciešams novērst "
+        other: "%{count} %{model} kļūdas ir nepieciešams novērst"

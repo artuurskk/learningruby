@@ -1,17 +1,62 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Depot</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <title>PC Shop</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application', media: 'all',
+                          'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application',
+                             'data-turbolinks-track': 'reload' %>
+  <script type="text/javascript">
+      I18n.defaultLocale = "<%= I18n.default_locale %>";
+      I18n.locale = "<%= I18n.locale %>";
+  </script>
+</head>
+<body>
+<header class="main">
+  <%= image_tag 'logo.png', width:170, height:130 %>
+  <h1><%= @page_title %></h1>
+</header>
+<section class="content">
+  <nav class="side_nav left">
+    <ul>
+      <li><a href="/"><%= t('.home') %></a></li>
+      <li><a href="/about-us"><%= t('.about-us') %></a></li>
+      <li><a href="/contact"><%= t('.contact') %></a></li>
+      <li><a href="/login"><%= t('.login') %></a></li>
+    </ul>
+  </nav>
+  <main class='<%= controller.controller_name %>'>
+    <%= yield %>
+  </main>
+  <nav class="side_nav right">
 
-  <body>
-    <main class='<%= controller.controller_name %>'>
-      <%= yield %>
-    </main>
-  </body>
+    <% if session[:user_id] %>
+      <nav class="logged_in_nav">
+        <ul>
+          <li><%= link_to t('.orders') , orders_path %></li>
+          <li><%= link_to t('.products'), products_path %></li>
+          <li><%= link_to t('.users'), users_path %></li>
+          <li><%= button_to t('.logout'), logout_path(locale: I18n.locale), method: :delete %></li>
+        </ul>
+      </nav>
+    <% end %>
+    <br>
+    <% if @cart %>
+
+      <div id="cart" class="carts">
+        <%= render_if @cart && @cart.line_items.any?, @cart %>
+      </div>
+    <% end %>
+
+  </nav>
+
+</section>
+<footer>
+    <p>
+      PC Shop @ 2019
+    </p>
+</footer>
+</body>
 </html>
