@@ -87,11 +87,21 @@ lv:
   activerecord:
     errors:
       messages:
-        inclusion: "nevar tikt atlasīts"
+        inclusion: "nav atlasīts"
         blank: "lauks nevar būt tukšs"
+    models:
+      order: "pasūtījuma"
+    attributes:
+      order:
+        address: "Adreses"
+        name: "Vārda"
+        email: "E-pasta"
+        pay_type: "Maksājuma veids"
   errors:
     template:
       body: "sekojošas problēmas aizpildot formu"
       header:
         one: "1 %{model} kļūdu ir nepieciešams novērst "
         other: "%{count} %{model} kļūdas ir nepieciešams novērst"
+
+  thanks: "Paldies par pasūtījumu!"
