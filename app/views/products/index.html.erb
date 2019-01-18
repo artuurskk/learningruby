@@ -1,41 +1,53 @@
-<% if notice %>
-  <aside id="notice"><%= notice %></aside>
-<% end %>
-<h1>Products</h1>
-<table>
-  <tfoot>
-  <tr>
-    <td colspan="3">
-      <%= link_to 'New product', new_product_path %>
-    </td>
-  </tr>
-  </tfoot>
-  <tbody>
-  <% @products.each do |product| %>
-    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-      <td class="image">
-        <%= image_tag(product.image_url, class: 'list_image') %>
-      </td>
-      <td class="description">
-        <h1><%= product.title %></h1>
-        <p>
-          <%= truncate(strip_tags(product.description),
-                       length: 80) %>
-        </p>
-      </td>
-      <td class="actions">
-        <ul>
-          <li><%= link_to 'Show', product %></li>
-          <li><%= link_to 'Edit', edit_product_path(product) %></li>
-          <li>
-            <%= link_to 'Destroy',
-                        product,
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' } %>
-          </li>
-        </ul>
-      </td>
-    </tr>
+
+<div class="container justify-content-center" >
+  <% if notice %>
+    <div class="alert alert-info">
+      <%= notice %>
+    </div>
   <% end %>
-  </tbody>
-</table>
+
+  <div class="row justify-content-center">
+    <h1 class="text-center">Products</h1>
+  </div>
+  <div class="row justify-content-center">
+    <table class="table">
+      <tfoot>
+      <tr>
+        <td colspan="3">
+          <%= link_to raw("<i class=\"fas fa-plus\"></i> New Product"), new_product_path, class: "btn btn-primary" %>
+        </td>
+      </tr>
+      </tfoot>
+      <tbody>
+      <% @products.each do |product| %>
+        <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+          <td class="image">
+            <%= image_tag(product.image_url, class: 'list_image img-fluid') %>
+          </td>
+          <td class="description">
+            <h1><%= product.title %></h1>
+            <p>
+              <%= truncate(strip_tags(product.description),
+                           length: 80) %>
+            </p>
+          </td>
+          <td class="actions">
+            <ul>
+              <li><%= link_to raw("<i class=\"fas fa-eye\"></i>"), product, class: "btn btn-info btn-sm" %></li>
+              <li><%= link_to raw("<i class=\"fas fa-edit\"></i>"), edit_product_path(product), class: "btn btn-warning btn-sm" %></li>
+              <li>
+                <%= link_to raw("<i class=\"fas fa-trash-alt\"></i>"),
+                            product,
+                            method: :delete,
+                            class: "btn btn-danger btn-sm",
+                            data: { confirm: 'Are you sure?' } %>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>

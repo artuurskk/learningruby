@@ -1,23 +1,40 @@
 <% unless cart.line_items.empty? %>
-<article>
+<div class="container cart-container">
 
-  <h2><%= t('.title') %></h2>
-  <table>
+  <h2><%= t('.title') %> <i class="fas fa-shopping-cart"></i></h2>
+
+  <table id="cart" class="table table-hover table-condensed">
+    <thead>
+    <tr>
+      <th><%= t('.product') %></th>
+      <th colspan="2" class="hidden-xs"></th>
+      <th><%= t('.price') %></th>
+      <th class="text-center"><%= t('.quantity') %></th>
+      <th class="text-center"><%= t('.subtotal') %></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
       <%= render(cart.line_items) %>
+    </tbody>
     <tfoot>
     <tr>
-      <th colspan="2">Total:</th>
-      <td class="price"><%= number_to_currency(cart.total_price) %></td>
+      <td colspan="3" class="hidden-xs"></td>
+      <td class="hidden-xs text-center"><strong><%= t('.total') %> <%= number_to_currency(cart.total_price) %></strong></td>
+      <td>
+        <%= button_to t('.checkout'), new_order_path(locale: I18n.locale),
+                      method: :get,
+                      class: "btn btn-success btn-block"%>
+      </td>
+      <td>
+        <%= button_to t('.empty'), cart,
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' },
+                      class: "btn btn-danger btn-block" %>
+      </td>
+      <td></td>
     </tr>
     </tfoot>
   </table>
-  <div class="actions">
-    <%= button_to t('.empty'), cart,
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' } %>
-    <%= button_to t('.checkout'), new_order_path(locale: I18n.locale),
-                  method: :get,
-                  class: "checkout"%>
-  </div>
-</article>
+</div>
 <% end %>

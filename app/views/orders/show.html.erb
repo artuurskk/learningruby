@@ -1,4 +1,9 @@
-<p id="notice"><%= notice %></p>
+<div class="container" >
+  <% if notice %>
+    <div class="alert alert-info">
+      <%= notice %>
+    </div>
+  <% end %>
 
 <p>
   <strong>Name:</strong>
@@ -20,5 +25,6 @@
   <%= @order.pay_type %>
 </p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Edit', edit_order_path(@order),class: 'btn btn-success' %>
+<%= link_to 'Back', orders_path, class: 'btn btn-danger'%>
+</div>

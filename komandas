@@ -1,0 +1,2 @@
+Pievienot lietotaju: user = User.create(name: 'arturs', password: 'parole123', password_confirmation: 'parole123')
+

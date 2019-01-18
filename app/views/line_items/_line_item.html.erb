@@ -3,7 +3,24 @@
 <% else %>
   <tr>
 <% end %>
-  <td class="quantity"><%= line_item.quantity %></td>
-  <td><%= line_item.product.title %></td>
-  <td class="price"><%= number_to_currency(line_item.total_price) %></td>
+  <td data-th="Product">
+    <div class="row">
+      <div class="col-sm-12">
+        <h6 class="nomargin"><%= line_item.product.title %></h6>
+      </div>
+    </div>
+  </td>
+<td colspan="2" class="hidden-xs"></td>
+
+  <td data-th="Price"><%= number_to_currency(line_item.price, locale: I18n.locale) %></td>
+  <td data-th="Quantity" class="text-center">
+    <%= line_item.quantity %>
+  </td>
+  <td data-th="Subtotal" class="text-center"><%= number_to_currency(line_item.total_price, locale: I18n.locale) %></td>
+
+  <td class="actions" data-th="">
+      <%= link_to raw("<i class=\"fas fa-trash-alt\"></i>"), line_item,
+                    method: :delete,
+                    class: "btn btn-danger btn-sm" %>
+    </td>
 </tr>

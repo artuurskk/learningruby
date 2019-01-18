@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get "/pages/:page" => "pages#show"
+
   get 'admin' => 'admin#index'
   controller :sessions do
     get 'login' => :new
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
     delete 'logout' => :destroy
   end
 
+  resources :upload
   resources :users
   resources :products do
     get :who_bought, on: :member
@@ -18,6 +21,5 @@ Rails.application.routes.draw do
     resources :carts
     root 'store#index', as: 'store_index', via: :all
   end
-# For details on the DSL available within this file, see
-# http://guides.rubyonrails.org/routing.html
+
 end

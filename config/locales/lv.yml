@@ -51,6 +51,11 @@ lv:
       title: "Tavs grozs"
       empty: "Iztukšot"
       checkout: "Pirkt"
+      product: "Produkts"
+      price: "Cena"
+      quantity: "Daudzums"
+      subtotal: "Kopā (par preci)"
+      total: "Kopā"
 
   number:
     currency:
@@ -76,13 +81,13 @@ lv:
         credit_card: "Kredītkarte"
         purchase_order: "Pasūtījuma numurs"
       check_pay_type:
-        routing_number: "Bankas kods:"
-        account_number: "Konta Nr."
+        routing_number: "Bankas kods: "
+        account_number: "Konta Nr. "
       credit_card_pay_type:
-        cc_number: "Drošības kods(CC):"
-        expiration_date: "Derīguma termiņš(Y/M)"
+        cc_number: "Drošības kods(CC): "
+        expiration_date: "Derīguma termiņš(Y/M) "
       purchase_order_pay_type:
-        po_number: "Numurs:"
+        po_number: "Numurs: "
 
   activerecord:
     errors:

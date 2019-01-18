@@ -2,7 +2,7 @@
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .store {
-  max-width: 80em;
+
 
   ul.catalog {
     border-top: solid 0.250em;
@@ -35,24 +35,17 @@
 
       .price {
         font-size: 1.5em;
-      }
-
-      form, div {
-        display: inline;
-      }
-
-      input[type="submit"] {
-        background-color: #2e2f30;
-        border-radius: 0.354em;
-        border: solid thin #636265;
-        color: white;
-        font-size: 1em;
         float:right;
-        padding: 0.3em 1em;
+        p, a{
+          display:inline-block;
+        }
+        p{
+          margin-right:10px;
+        }
       }
-      input[type="submit"]:hover {
-        background-color: #212122;
-        cursor:pointer;
+      a{
+        text-align:center;
+        padding:5px 12px 5px 10px;
       }
     }
   }

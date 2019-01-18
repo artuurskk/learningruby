@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>PC Shop</title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag 'application', media: 'all',
@@ -12,59 +13,87 @@
       I18n.defaultLocale = "<%= I18n.default_locale %>";
       I18n.locale = "<%= I18n.locale %>";
   </script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
 <body>
 <header class="main">
-  <aside>
-    <%= form_tag store_index_path, class: 'locale' do %>
-      <%= select_tag 'set_locale',
-                     options_for_select(LANGUAGES, I18n.locale.to_s),
-                     onchange: 'this.form.submit()' %>
-      <%= submit_tag 'submit', id: "submit_locale_change" %>
-    <% end %>
-  </aside>
-  <%= image_tag 'logo.png', width:170, height:130 %>
-  <h1><%= @page_title %></h1>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/"><%= t('.home') %></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pages/about_us"><%= t('.about-us') %></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pages/contacts"><%= t('.contact') %></a>
+        </li>
+
+      </ul>
+
+    </div>
+    <div class="mx-auto order-0">
+      <a class="navbar-brand mx-auto" href="/"><i style="font-size:16px;" class="fas fa-desktop"></i> PC Shop </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+      <ul class="navbar-nav ml-auto">
+        <% if session[:user_id] %>
+        <li class="nav-item"><%= link_to t('.orders') , orders_path, class:'nav-link' %></li>
+        <li class="nav-item"><%= link_to t('.products'), products_path, class:'nav-link' %></li>
+        <li class="nav-item"><%= link_to t('.users'), users_path, class:'nav-link' %></li>
+        <li class="nav-item"><%= button_to t('.logout'), logout_path(locale: I18n.locale), method: :delete, class:'btn btn-danger' %></li>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link" href="/login"><%= t('.login') %></a>
+          </li>
+        <% end %>
+        <%= form_tag store_index_path, class: 'locale' do %>
+          <%= select_tag 'set_locale',
+                         options_for_select(LANGUAGES, I18n.locale.to_s),
+                         onchange: 'this.form.submit()',
+                        class: 'locale-btn' %>
+          <%= submit_tag 'submit', id: "submit_locale_change" %>
+        <% end %>
+      </ul>
+
+    </div>
+  </nav>
 </header>
-<section class="content">
-  <nav class="side_nav left">
-    <ul>
-      <li><a href="/"><%= t('.home') %></a></li>
-      <li><a href="/about-us"><%= t('.about-us') %></a></li>
-      <li><a href="/contact"><%= t('.contact') %></a></li>
-      <li><a href="/login"><%= t('.login') %></a></li>
-    </ul>
-  </nav>
-  <main class='<%= controller.controller_name %>'>
-    <%= yield %>
-  </main>
-  <nav class="side_nav right">
-
-    <% if session[:user_id] %>
-      <nav class="logged_in_nav">
-        <ul>
-          <li><%= link_to t('.orders') , orders_path %></li>
-          <li><%= link_to t('.products'), products_path %></li>
-          <li><%= link_to t('.users'), users_path %></li>
-          <li><%= button_to t('.logout'), logout_path(locale: I18n.locale), method: :delete %></li>
-        </ul>
-      </nav>
-    <% end %>
-    <br>
-    <% if @cart %>
-
-      <div id="cart" class="carts">
-        <%= render_if @cart && @cart.line_items.any?, @cart %>
+<div class="container justify-content-center">
+  <section class="content">
+    <div class="row">
+      <div class="col-12">
+        <% if @cart %>
+          <div id="cart" class="carts">
+            <%= render_if @cart && @cart.line_items.any?, @cart %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
+    <div class="row">
 
-  </nav>
+      <div class="col-12">
+        <main class='<%= controller.controller_name %>'>
+          <%= yield %>
+        </main>
 
-</section>
-<footer>
-    <p>
-      PC Shop @ 2019
-    </p>
+      </div>
+    </div>
+
+
+  </section>
+</div>
+
+<footer class="page-footer font-small gray">
+
+  <div class="footer-copyright text-center py-3">© 2019
+   PC Shop
+  </div>
+
 </footer>
 </body>
 </html>

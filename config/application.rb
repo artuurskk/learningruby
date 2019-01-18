@@ -2,6 +2,7 @@ require_relative 'boot'
 
 require 'rails/all'
 
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -17,5 +18,6 @@ module Depot
     # the framework and any gems in your application.
     config.filter_parameters += [ :credit_card_number ]
     config.middleware.use I18n::JS::Middleware
+    config.i18n.default_locale = :en
   end
 end

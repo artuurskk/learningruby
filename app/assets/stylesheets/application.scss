@@ -1,4 +1,4 @@
-/*
+/*gem install money
 * This is a manifest file that'll be compiled into application.css, which will
 * include all the files listed below.
 *
@@ -12,54 +12,50 @@
 * directory. Styles in this file should be added after the last require_*
 * statement. It is generally better to create a new file per style scope.
 *
-*= require_tree .
-*= require_self
 */
-/* @import 'bootstrap'; */
+
+@import 'bootstrap';
+@import 'store';
+@import 'admin';
+@import 'carts';
+@import 'orders';
+@import 'products';
+@import 'users';
 
 body {
-  margin: 0;
-  padding: 0;
-  height:100%;
-  width:100%;
+  font-size:12px;
+  min-height:1080px;
 }
-header.main {
-  text-align: center; // center on mobile
-  @media (min-width: 30em) {
-    text-align: left; // left align on desktop
+h1{
+  font-size:26px;
+}
+h2{
+  font-size:24px;
+}
+input{
+  font-size:12px;
+}
+header.main{
+  .nav-item{
+    padding:5px;
+    .nav-link{
+      color:white;
+      text-decoration:none;
+    }
   }
-  background: #ffffff;
-  margin: 0;
+  .btn{
+    font-size:12px;
+  }
+}
+.table>tbody>tr>td, .table>tfoot>tr>td{
+  vertical-align: middle;
+}
+#cart{
+  .btn-block{
+    padding:3px 0 3px 0;
+  }
+}
 
-  h1 {
-    display: none;
-  }
-}
-main{
-  width:100%;
-}
-.depot_form{
-  width:100%;
-  .container{
-    margin:0 auto;
-    max-width:50%;
-  }
-}
-#cart {
-  article {
-    h2 {
-      margin-top: 0;
-      text-align:center;
-    }
-    background: white;
-    border-radius: 0.5em;
-    margin: 1em;
-    padding: 1.3em;
-    @media (min-width: 30em) {
-      margin: 0; // desktop doesn't need this margin
-    }
-  }
-}
 .notice, #notice {
   background: #ffb;
   border-radius: 0.5em;
@@ -71,72 +67,18 @@ main{
   text-align: center;
 }
 .content {
-  width:100%;
-  margin: 0;
+  margin: 25px 0 0 0;
   padding: 0;
-  display: flex;
-  display: -webkit-flex;
-  flex-direction: column;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  @media (min-width: 30em) {
-    flex-direction: row; // desktop is vertically laid out
-    -webkit-box-orient: horizontal;
-  }
-  .right{
-    text-align: right;
-    border-top-left-radius:10px;
-    border-bottom-left-radius:10px;
-    max-width:20%;
-    @media (min-width: 30em) {
-      padding: 1em;
-    }
-  }
-  .left{
-    text-align: left;
-    border-top-right-radius:10px;
-    border-bottom-right-radius:10px;
-    min-width:10%;
-  }
-  nav {
-    min-width:0;
-    padding-bottom: 1em;
-    background: #1c1b1d;
-    text-align: center; // mobile has centered nav
-    @media (min-width: 30em) {
-      padding: 1.5em;
-    }
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      @media (min-width: 30em) {
-        padding-right: 1em; // give desktop some extra space
-      }
-      li {
-        margin: 0;
-        text-transform: uppercase;
-        a {
-          color: #d3d4d5;
-          text-decoration: none;
-          display:block;
-          padding:1em;
-        }
-        a:hover {
-          background: none;
-          color: white;
-        }
-      }
-    }
-  }
+
 
   main {
     padding: 0.5em 0.5em 0.5em 2em;
   }
 }
 .depot_form {
-  padding: 0 1em;
 
+  margin-top:20px;
+  padding: 0 1em;
   h1 {
     font-size: 1.99em;
     line-height: 1.41em;
@@ -155,11 +97,9 @@ main{
   }
 
   input, textarea, select, option {
-    border: solid thin #888;
     box-sizing: border-box;
-    font-size: 1em;
+    font-size: 12px;
     padding: 0.5em;
-    width: 100%;
   }
 
   label {
@@ -224,43 +164,28 @@ main{
     }
   }
 }
-nav.logged_in_nav {
-  padding: 0.354em 0;
-  border-radius:0;
-  margin-top: 0.354em;
-  input[type="submit"] {
-    // Make the logout button look like a
-    // link, so it matches the nav style
-    background: none;
-    border: none;
-    color: #b32320;
-    font-size: 1em;
-    font-weight:bold;
-    cursor:pointer;
-    margin: 0;
-    padding: 0;
-    text-transform: uppercase;
-  }
-  input[type="submit"]:hover {
-    color: white;
-  }
-}
+
 .locale {
   float: right;
   margin: 1em;
+  select{
+    padding:2px;
+    border:0;
+    border-radius:5px;
+    background:white;
+  }
 }
 footer{
-  height:40px;
-  background: #1c1b1d;
+
+  background: #343a40;
   position:fixed;
   bottom:0;
   width:100%;
-  text-align:center;
-  padding:1em;
+  color:white;
   p{
-
-    display: inline-block;
     color:white;
-    vertical-align:middle;
   }
+}
+.alert{
+  text-align:center;
 }

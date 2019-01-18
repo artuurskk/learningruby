@@ -1,4 +1,3 @@
-be sure to change these values
 user = 'arturs'
 domain = 'depot.localhost'
 # adjust if you are using RVM, remove if you are not
