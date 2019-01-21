@@ -7,7 +7,22 @@
   <% end %>
 
   <div class="row justify-content-center">
-    <h1 class="text-center">Products</h1>
+    <div class="col-6">
+      <h1>Products</h1>
+    </div>
+    <div class="col-6">
+      <div class="search">
+        <%= form_tag(products_path, :method => "get", id: "search-form", class: "form-inline") do %>
+          <div class="input-group">
+            <%= text_field_tag :search, params[:search], placeholder: "Search", class:"form-control" %>
+            <%= button_tag(type: "submit", class: "input-group-text") do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
   </div>
   <div class="row justify-content-center">
     <table class="table">
@@ -29,6 +44,16 @@
             <p>
               <%= truncate(strip_tags(product.description),
                            length: 80) %>
+            </p>
+            <% if product.category %>
+              <p>
+                <strong>Category:</strong>
+                <%= product.category.name %>
+              </p>
+            <% end %>
+            <p>
+              <strong>Created:</strong>
+              <%= product.created_at %>
             </p>
           </td>
           <td class="actions">

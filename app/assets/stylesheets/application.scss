@@ -24,7 +24,7 @@
 
 body {
   font-size:12px;
-  min-height:1080px;
+  height:100%;
 }
 h1{
   font-size:26px;
@@ -36,15 +36,20 @@ input{
   font-size:12px;
 }
 header.main{
-  .nav-item{
-    padding:5px;
-    .nav-link{
-      color:white;
-      text-decoration:none;
+  nav {
+
+    .nav-item {
+      padding: 5px;
+
+      .nav-link {
+        color: white;
+        text-decoration: none;
+      }
     }
-  }
-  .btn{
-    font-size:12px;
+
+    .btn {
+      font-size: 12px;
+    }
   }
 }
 .table>tbody>tr>td, .table>tfoot>tr>td{
@@ -72,7 +77,7 @@ header.main{
 
 
   main {
-    padding: 0.5em 0.5em 0.5em 2em;
+    padding: 0.5em;
   }
 }
 .depot_form {
@@ -189,3 +194,40 @@ footer{
 .alert{
   text-align:center;
 }
+
+#cartCollapse{
+
+}
+.shopping-cart{
+  color:white;
+  font-size:20px;
+  #lblCartCount {
+    font-size: 12px;
+    background: #ff0000;
+    color: #fff;
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: -10px;
+  }
+  .badge {
+    padding-left: 9px;
+    padding-right: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+  }
+
+  .label-warning[href],
+  .badge-warning[href] {
+    background-color: #c67605;
+  }
+  :hover{
+    color:gray;
+  }
+}
+
+.search{
+  margin-top:25px;
+
+}
+

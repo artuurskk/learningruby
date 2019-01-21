@@ -9,13 +9,12 @@ Rails.application.routes.draw do
     delete 'logout' => :destroy
   end
 
-  resources :upload
   resources :users
   resources :products do
     get :who_bought, on: :member
   end
 
-  scope '(:locale)' do
+  scope '(:locale)' , locale: /en|lv/ do
     resources :orders
     resources :line_items
     resources :carts

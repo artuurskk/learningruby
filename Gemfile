@@ -31,6 +31,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap'
 gem 'jquery-rails'
 
+gem 'will_paginate', '~> 3.1.1'
+gem 'will_paginate-bootstrap'
+
 gem 'i18n-js'
 
 # Use ActiveStorage variant

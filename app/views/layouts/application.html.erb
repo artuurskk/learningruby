@@ -21,7 +21,7 @@
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/"><%= t('.home') %></a>
+          <a class="nav-link" href="/<%= I18n.locale %>"><%= t('.home') %></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/pages/about_us"><%= t('.about-us') %></a>
@@ -34,7 +34,7 @@
 
     </div>
     <div class="mx-auto order-0">
-      <a class="navbar-brand mx-auto" href="/"><i style="font-size:16px;" class="fas fa-desktop"></i> PC Shop </a>
+      <a class="navbar-brand mx-auto" href="/<%= I18n.locale %>"><i style="font-size:16px;" class="fas fa-desktop"></i> PC Shop </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -42,24 +42,34 @@
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
       <ul class="navbar-nav ml-auto">
         <% if session[:user_id] %>
+
         <li class="nav-item"><%= link_to t('.orders') , orders_path, class:'nav-link' %></li>
         <li class="nav-item"><%= link_to t('.products'), products_path, class:'nav-link' %></li>
         <li class="nav-item"><%= link_to t('.users'), users_path, class:'nav-link' %></li>
-        <li class="nav-item"><%= button_to t('.logout'), logout_path(locale: I18n.locale), method: :delete, class:'btn btn-danger' %></li>
+        <li class="nav-item"><%= link_to t('.logout'), logout_path(locale: I18n.locale), method: :delete, class:'nav-link' %></li>
         <% else %>
           <li class="nav-item">
             <a class="nav-link" href="/login"><%= t('.login') %></a>
           </li>
         <% end %>
+
         <%= form_tag store_index_path, class: 'locale' do %>
           <%= select_tag 'set_locale',
                          options_for_select(LANGUAGES, I18n.locale.to_s),
                          onchange: 'this.form.submit()',
-                        class: 'locale-btn' %>
+                         class: 'locale-btn' %>
           <%= submit_tag 'submit', id: "submit_locale_change" %>
         <% end %>
-      </ul>
 
+      </ul>
+      <% if @cart %>
+        <a class="shopping-cart" id="cart-btn" data-toggle="collapse" href="#cartCollapse" role="button" aria-expanded="false" aria-controls="cartCollapse">
+            <span class="fa-stack">
+              <i class="fas fa-shopping-cart"></i>
+              <span class='badge badge-warning' id='lblCartCount'> <%= @cart.line_items.sum('quantity') %> </span>
+            </span>
+        </a>
+      <% end %>
     </div>
   </nav>
 </header>
@@ -68,8 +78,10 @@
     <div class="row">
       <div class="col-12">
         <% if @cart %>
-          <div id="cart" class="carts">
-            <%= render_if @cart && @cart.line_items.any?, @cart %>
+          <div class="collapse" id="cartCollapse">
+            <div id="cart" class="carts">
+              <%= render_if @cart && @cart.line_items.any?, @cart %>
+            </div>
           </div>
         <% end %>
       </div>

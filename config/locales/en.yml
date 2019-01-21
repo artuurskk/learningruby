@@ -90,3 +90,9 @@ en:
         po_number: "PO # "
 
   thanks: "Thank you for your order!"
+
+  pages:
+    about_us:
+       title: "About Us"
+    contacts:
+       title: "Contacts"

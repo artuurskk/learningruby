@@ -13,6 +13,13 @@
     <%= @product.image_url %>
   </p>
 
+  <% if @product.category %>
+  <p>
+    <strong>Category:</strong>
+    <%= @product.category.name %>
+  </p>
+  <% end %>
+
   <p>
     <strong>Price:</strong>
     <%= @product.price %>

@@ -64,7 +64,7 @@ lv:
         precision: 2
         separator: "."
         delimiter: ","
-        format: "%u%n"
+        format: "%n %u"
 
   orders:
     new:
@@ -110,3 +110,9 @@ lv:
         other: "%{count} %{model} kļūdas ir nepieciešams novērst"
 
   thanks: "Paldies par pasūtījumu!"
+
+  pages:
+    about_us:
+      title: "Par mums"
+    contacts:
+      title: "Kontakti"

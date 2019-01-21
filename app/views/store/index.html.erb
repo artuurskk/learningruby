@@ -3,24 +3,68 @@
     <%= notice %>!
   </div>
 <% end %>
+
 <ul class="catalog">
-  <% cache @products do %>
-    <% @products.each do |product| %>
-      <% cache product do %>
-        <li>
-          <%= image_tag(product.image_url, class: "img-fluid")  %>
-          <h2><%= product.title %></h2>
-          <p>
-            <%= sanitize(product.description) %>
-          </p>
-          <div class="price">
-            <p><%= number_to_currency(product.price) %></p>
-            <%= link_to raw("<i class=\"fas fa-cart-plus\"></i>"),
-                  line_items_path(product_id: product, locale: I18n.locale),
-                  remote:true, :method => :post, class: 'btn btn-success' %>
+  <div class="row search">
+    <div class="col-md-3">
+      <div class="category-search">
+        <form>
+          <div class="form-group">
+            <%= select_tag :category_id, options_for_select(@categories, selected: params[:category_id]),
+                           prompt: 'Select Category',
+                           class:'form-control',
+                           onchange: ("this.form.submit()")%>
           </div>
-        </li>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="product-search float-right">
+        <%= form_tag(store_index_path, :method => "get", class: "form-inline") do %>
+          <div class="input-group">
+            <%= text_field_tag :search, params[:search], placeholder: "Search", id: "search-form", class:"form-control" %>
+            <%= button_tag(type: "submit", id:"search-btn", remote:true, class: "input-group-text") do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="search-results" class="row">
+    <div class="col-12">
+      <% cache @products do %>
+
+        <% @products.each do |product| %>
+          <% cache product do %>
+            <li>
+              <%= image_tag(product.image_url, class: "img-fluid")  %>
+              <h2><%= product.title %></h2>
+              <p>
+                <%= sanitize(product.description) %>
+              </p>
+              <% if product.category %>
+                <p>
+                  <strong>Category:</strong>
+                  <%= product.category.name %>
+                </p>
+              <% end %>
+              <div class="price">
+                <p><%= number_to_currency(product.price) %></p>
+                <%= link_to raw("<i class=\"fas fa-cart-plus\"></i>"),
+                            line_items_path(product_id: product, locale: I18n.locale),
+                            remote:true, :method => :post, class: 'btn btn-success' %>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+
       <% end %>
-    <% end %>
-  <% end %>
+
+    </div>
+
+  </div>
+
 </ul>
