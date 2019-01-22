@@ -4,6 +4,38 @@
 .store {
 
   margin-bottom:100px;
+  .paginate-container{
+    padding-top:25px;
+    text-align:center;
+    .pagination{
+      width:25%;
+      margin:0 auto;
+      text-align:center;
+      .active{
+        background: #5bc0de;
+        span{
+          color:white;
+        }
+      }
+      .prev{
+        border-top-left-radius:5px;
+        border-bottom-left-radius:5px;
+      }
+      .next{
+        border-top-right-radius:5px;
+        border-bottom-right-radius:5px;
+      }
+      li{
+        padding:10px;
+        cursor:pointer;
+        border:1px solid rgba(85, 148, 202, 0.5);
+        span{
+          display:block;
+        }
+      }
+    }
+  }
+
   ul.catalog {
     border-top: solid 0.250em;
     list-style: none;
@@ -21,6 +53,9 @@
         clear: both;
         content: " ";
         display: block;
+      }
+      p{
+        max-width:90%;
       }
 
       img {
