@@ -7,14 +7,19 @@
   }
   margin-bottom:100px;
   .paginate-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
     padding-top:25px;
     text-align:center;
     .pagination{
-      width:25%;
       margin:0 auto;
       text-align:center;
+      a{
+        color: #343a40;
+      }
       .active{
-        background: #5bc0de;
+        background: #343a40;
         span{
           color:white;
         }
@@ -30,7 +35,7 @@
       li{
         padding:10px;
         cursor:pointer;
-        border:1px solid rgba(85, 148, 202, 0.5);
+        border:1px solid rgba(3, 44, 64, 0.51);
         span{
           display:block;
         }

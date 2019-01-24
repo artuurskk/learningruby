@@ -61,20 +61,9 @@ header.main{
   }
 }
 
-.notice, #notice {
-  background: #ffb;
-  border-radius: 0.5em;
-  border: solid 0.177em #882;
-  color: #882;
-  font-weight: bold;
-  margin-bottom: 1em;
-  padding: 1em 1.414em;
-  text-align: center;
-}
 .content {
   margin: 25px 0 0 0;
   padding: 0;
-
 
   main {
     padding: 0.5em;
@@ -230,3 +219,9 @@ footer{
   margin-bottom:25px;
 }
 
+@include media-breakpoint-down(md) {
+  .container {
+    width: 100%;
+    max-width: none;
+  }
+}

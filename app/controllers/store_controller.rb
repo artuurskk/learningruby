@@ -14,7 +14,7 @@ class StoreController < ApplicationController
         else if params[:category_id]
            @products = Product.paginate(:page => params[:page], :per_page => 10).where(:category_id => params[:category_id])
              else
-              @products = Product.paginate(:page => params[:page], :per_page => 5).order("created_at DESC")
+              @products = Product.paginate(:page => params[:page], :per_page => 3).order("created_at DESC")
           end
         end
     end
