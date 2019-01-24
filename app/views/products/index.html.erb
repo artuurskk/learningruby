@@ -6,11 +6,11 @@
     </div>
   <% end %>
 
-  <div class="row justify-content-center">
-    <div class="col-6">
+  <div class="row justify-content-center search">
+    <div class="col-md-5">
       <h1>Products</h1>
     </div>
-    <div class="col-6">
+    <div class="col-md-4">
       <div class="search">
         <%= form_tag(products_path, :method => "get", id: "search-form", class: "form-inline") do %>
           <div class="input-group">
@@ -22,17 +22,13 @@
         <% end %>
       </div>
     </div>
+    <div class="col-md-3">
+      <%= link_to raw("<i class=\"fas fa-plus\"></i> New Product"), new_product_path, class: "btn btn-primary" %>
+    </div>
 
   </div>
   <div class="row justify-content-center">
     <table class="table">
-      <tfoot>
-      <tr>
-        <td colspan="3">
-          <%= link_to raw("<i class=\"fas fa-plus\"></i> New Product"), new_product_path, class: "btn btn-primary" %>
-        </td>
-      </tr>
-      </tfoot>
       <tbody>
       <% @products.each do |product| %>
         <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
