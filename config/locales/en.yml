@@ -33,6 +33,8 @@ en:
   store:
       index:
         add_html: "Add to Cart"
+        category: "Select Category"
+        search: "Search"
 
   layouts:
     application:

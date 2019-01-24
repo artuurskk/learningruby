@@ -11,7 +11,7 @@
         <form>
           <div class="form-group">
             <%= select_tag :category_id, options_for_select(@categories, selected: params[:category_id]),
-                           prompt: 'Select Category',
+                           prompt: t('.category'),
                            class:'form-control',
                            onchange: ("this.form.submit()")%>
           </div>
@@ -22,7 +22,7 @@
       <div class="product-search float-right">
         <%= form_tag(store_index_path, :method => "get", class: "form-inline") do %>
           <div class="input-group">
-            <%= text_field_tag :search, params[:search], placeholder: "Search", id: "search-form", class:"form-control" %>
+            <%= text_field_tag :search, params[:search], placeholder: t('.search'), id: "search-form", class:"form-control" %>
             <%= button_tag(type: "submit", id:"search-btn", remote:true, class: "input-group-text") do %>
               <i class="fas fa-search"></i>
             <% end %>
